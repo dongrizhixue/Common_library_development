@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Common_library_development
 {
@@ -69,7 +66,7 @@ namespace Common_library_development
                 b = true;
                 message = "发送成功!";
             }
-            catch (System.Net.Mail.SmtpException ex)
+            catch (SmtpException ex)
             {
                 b = false;
                 message = "发送失败!" + ex.Message.ToString();
@@ -94,7 +91,7 @@ namespace Common_library_development
         private static bool RemoteCertificateValidate(object sender, X509Certificate cert, X509Chain chain, SslPolicyErrors error)
         {
             // trust any certificate!!!
-            System.Console.WriteLine("Warning, trust any certificate");
+            Console.WriteLine("Warning, trust any certificate");
             return true;
         }
     }
